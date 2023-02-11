@@ -5,7 +5,7 @@
 
 int main()
 {
-    keyboard_keys keyboard;
+    keyboard_keys keyboard;    //keyboard inicialise
     size_t size_x = 25;
     size_t size_y = 25;
 
