@@ -9,7 +9,7 @@ int main()
     size_t size_x = 25;
     size_t size_y = 25;
 
-    std::cout << "!Recreation of 'Game of Life' by xkrivan5!\n\n";
+    std::cout << "!Recreation of 'Game of Life' by skrovno_CZ!\n\n";
     std::cout << "Controls:\n";
     std::cout << "-------------------------------------------------\n";
     std::cout << "E      -Enter editor.\n";
