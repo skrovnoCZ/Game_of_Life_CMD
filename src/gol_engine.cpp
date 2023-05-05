@@ -4,6 +4,7 @@
 
 gol_engine::gol_engine(size_t new_y, size_t new_x)
 {
+    m_p_screen = new grid_screen(new_y + 2, new_x + 2);
     m_editor_enabled = false;
     m_selector_x = new_x / 2;
     m_selector_y = new_y / 2;
@@ -39,13 +40,13 @@ void gol_engine::edit_grid_contents()   //game grid editor
 
     switch (m_keyboard.get_key())
     {
-    case VK_UP:
+    case VK_DOWN:
         if ((m_selector_y - 1) > 0)
         {
             m_selector_y--;
         }
         break;
-    case VK_DOWN:
+    case VK_UP:
         if ((m_selector_y + 1) < m_gol_grid.size() - 1)
         {
             m_selector_y++;
@@ -98,27 +99,27 @@ void gol_engine::render_screen()
 {
     for (size_t y = 0; y < m_gol_grid.size(); y++)
     {
-        if (m_editor_enabled)
+        for (size_t x = 0; x < m_gol_grid.at(y).size(); x++)
         {
-            for (size_t x = 0; x < m_gol_grid.at(y).size(); x++)
+            if (m_editor_enabled)
             {
                 if ((y == m_selector_y) && (x == m_selector_x))
                 {
-                    std::cout << '*';
+                    m_p_screen->set_point(x + 1, y + 1, '*');
                 }
                 else
                 {
-                    std::cout << m_gol_grid.at(y).at(x);    //TODO: fix slow rendering
+                    m_p_screen->set_point(x + 1, y + 1, m_gol_grid.at(y).at(x)); //TODO: fix slow rendering
                 }
             }
+            else
+            {
+                m_p_screen->set_point(x + 1, y + 1, m_gol_grid.at(y).at(x)); //TODO: fix slow rendering
+            }
         }
-        else
-        {
-            std::cout << m_gol_grid.at(y);
-        }
-
-        std::cout << std::endl;
     }
+
+    m_p_screen->print_grid();
 }
 
 

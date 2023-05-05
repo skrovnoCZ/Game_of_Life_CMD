@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 #include "gol_engine.h"
 #include "ConsoleColor.h"   //downloaded library
@@ -26,20 +26,21 @@ int main()
     std::cout << "-------------------------------------------------\n\n";
     std::cout << "Set font in console config to 'Raster Font' and size '8x8' for best experience!!!\n\n";
     std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-    std::cout << "!!!!!!" << red <<"CAUTION. FLASHING IMAGES" << white << "!!!!!!\n";
+    std::cout << "!!!!!!" << red << "CAUTION. FLASHING IMAGES" << white << "!!!!!!\n";
     std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n";
-    std::cout << "Set grid size (smaller is faster, bigger is slower. Optimal is 25x25).\n" << std::endl;
+    std::cout << "Set grid size (smaller is faster, bigger is slower. Optimal is 75x75).\n" << std::endl;
     std::cout << "X: ";
     std::cin >> size_x;
     std::cout << "\nY: ";
     std::cin >> size_y;
     std::cout << std::endl;
+    system("CLS");
 
     gol_engine* p_game_of_life = new gol_engine(size_y, size_x);
 
     while (keyboard.get_key() != VK_ESCAPE) //game cycle
     {
-        system("CLS");
+        //system("CLS");
         keyboard.reset_keys();
         keyboard.keyboard_key_e();
         keyboard.keyboard_key_esc();
@@ -51,7 +52,7 @@ int main()
 
         while (p_game_of_life->get_editor_status()) //editor cycle
         {
-            system("CLS");
+            //system("CLS");
             p_game_of_life->edit_grid_contents();
             p_game_of_life->render_screen();
         }

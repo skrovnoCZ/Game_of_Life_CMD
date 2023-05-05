@@ -8,6 +8,7 @@
 //#include <sstream>
 #include <string>
 #include "keyboard_keys.h"
+#include "grid_screen.h"
 
 #define CELL_DEAD ' '
 #define CELL_ALIVE (char)219
@@ -16,6 +17,7 @@
 class gol_engine
 {
 private:
+    grid_screen *m_p_screen;
     keyboard_keys m_keyboard;
     std::vector<std::string> m_gol_grid;
     std::vector<std::string> m_gol_grid_cache;
