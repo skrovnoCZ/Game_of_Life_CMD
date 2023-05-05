@@ -69,6 +69,7 @@ size_t grid_screen::get_height()
 //universal for both windows and linux terminals
 void grid_screen::print_grid()
 {
+#if 0
     if (m_render && !m_rendered)    //flip-flop to do "cout" every second time
     {
 #ifdef __linux__ 
@@ -88,6 +89,9 @@ void grid_screen::print_grid()
         m_render = true;
         m_rendered = false;
     }
+#endif
+    SetCursorPosition(0, 0);
+    std::cout << m_grid;
 }
 
 void grid_screen::refresh_grid()
